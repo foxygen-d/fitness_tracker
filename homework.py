@@ -1,8 +1,9 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class InfoMessage:
-    """Информационное сообщение о тренировке."""    
+    """Информационное сообщение о тренировке."""
     training_type: str
     duration: float
     distance: float
@@ -44,7 +45,7 @@ class Training:
         return self.action * self.LEN_STEP / self.M_IN_KM
 
     def get_mean_speed(self) -> float:
-        """Получить среднюю скорость движения."""        
+        """Получить среднюю скорость движения."""
         return self.distance / self.duration_h
 
     def get_spent_calories(self) -> float:
@@ -68,7 +69,7 @@ class Running(Training):
         self.duration_m = self.duration_h * self.mins_in_hour
 
     def get_spent_calories(self) -> float:
-        """Возвращает число потраченных калорий при беге."""        
+        """Возвращает число потраченных калорий при беге."""
         return((18 * self.speed - 20) * self.weight
                 / self.M_IN_KM * self.duration_m)
 
@@ -94,7 +95,7 @@ class Swimming(Training):
     """Тренировка: плавание."""
 
     LEN_STEP: float = 1.38
-        
+
     def __init__(self,
                  action: int,
                  duration: float,
@@ -108,7 +109,7 @@ class Swimming(Training):
 
     def get_mean_speed(self) -> float:
         return (self.length_pool * self.count_pool
-                / self.M_IN_KM / self.duration_h)
+              / self.M_IN_KM / self.duration_h)
     
     def get_spent_calories(self) -> float:
         return (self.speed + 1.1) * 2 * self.weight
