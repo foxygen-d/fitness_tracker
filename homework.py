@@ -1,6 +1,4 @@
 from dataclasses import dataclass
-# Михаил, и мне приятно с вами познакомиться!)
-# Большое спасибо за ваши замечания!
 
 
 @dataclass
@@ -52,7 +50,7 @@ class Training:
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        return
+        return 22 * 9.247 + 3.098 * self.LEN_STEP
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
@@ -129,8 +127,7 @@ def read_package(workout_type: str, data: list) -> Training:
     if workout_type in types_of_sports:
         return types_of_sports[workout_type](*data)
     else:
-        return ('Ошибка! '
-                'Такого вида спорта в нашем фитнес-трекере нет!')
+        raise Exception('Ошибка! Такого вида спорта в нашем фитнес-трекере нет!')
 
 
 def main(training: Training) -> None:
